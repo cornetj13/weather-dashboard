@@ -4,30 +4,97 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>Weather Dashboard</title>
 </head>
 <body>
   <!-- Header -->
   <header>
-    <p>THIS WILL BE THE HEADER</p>
+    <div class="header">
+      <h1>Weather Dashboard</h1>
+    </div>
   </header>
 
   <!-- Main -->
-  <main>
-    <aside>
-      <p>THIS WILL BE THE CITY SEARCH</p>
-    </aside>
-    <section>
-      <p>THIS WILL BE THE JUMBOTRON WITH TODAYS WEATHER</p>
-    </section>
-    <section>
-      <p>THIS WILL BE THE GRID OF THE 5 DAY FORCAST</p>
-    </section>
+  <main class="flex-row body-sizing">
+    <div class="col-12 col-md-3 body-sizing-1">
+      <aside>
+        <div class="card">
+          <h3 class="card-header text-uppercase">Search for a City:</h3>
+          <form id="city-form" class="card-body">
+            <input name="city" id="city" type="text" autofocus="true" class="form-input" placeholder="Seattle"/>
+            <button type="submit" class="btn">Search</button>
+          </form>
+        </div>
+        <div>
+          <h2 class="subtitle">Previous Cities:</h2>
+          <div id="cities-container" class="list-group flex-col">
+            
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="flex-col col-12 col-md-9 body-sizing-2">
+      <section class="body-sizing-3" id="city-jumbotron">
+        <h2 id="jumbo-header"></h2>
+        <p id="jumbo-description"></p>
+        <p id="jumbo-temp"></p>
+        <p id="jumbo-wind"></p>
+        <p id="jumbo-humidity"></p>
+      </section>
+      <h2>5 Day Forecast: </h2>
+      <section class="body-sizing-4">
+        <div class="flex-row justify-space-around align-centers">
+          <div class="box" id="day-later-1">
+            <h3 id="forecast-header-1"></h3>
+            <p id="forecast-description-1"></p>
+            <p id="forecast-icon-1"></p>
+            <p id="forecast-temp-1"></p>
+            <p id="forecast-wind-1"></p>
+            <p id="forecast-humidity-1"></p>
+          </div>
+          <div class="box" id="day-later-2">
+            <h3 id="forecast-header-2"></h3>
+            <p id="forecast-description-2"></p>
+            <p id="forecast-icon-2"></p>
+            <p id="forecast-temp-2"></p>
+            <p id="forecast-wind-2"></p>
+            <p id="forecast-humidity-2"></p>
+          </div>
+          <div class="box" id="day-later-3">
+            <h3 id="forecast-header-3"></h3>
+            <p id="forecast-description-3"></p>
+            <p id="forecast-icon-3"></p>
+            <p id="forecast-temp-3"></p>
+            <p id="forecast-wind-3"></p>
+            <p id="forecast-humidity-3"></p>
+          </div>
+          <div class="box" id="day-later-4">
+            <h3 id="forecast-header-4"></h3>
+            <p id="forecast-description-4"></p>
+            <p id="forecast-icon-4"></p>
+            <p id="forecast-temp-4"></p>
+            <p id="forecast-wind-4"></p>
+            <p id="forecast-humidity-4"></p>
+          </div>
+          <div class="box" id="day-later-5">
+            <h3 id="forecast-header-5"></h3>
+            <p id="forecast-description-5"></p>
+            <p id="forecast-icon-5"></p>
+            <p id="forecast-temp-5"></p>
+            <p id="forecast-wind-5"></p>
+            <p id="forecast-humidity-5"></p>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <!-- Footer -->
-  <footer>
-    <p>THIS WILL BE THE FOOTER</p>
+  <footer class="footer">
+    <h4>&copy 2022 Jonathan Cornet Webpage Production</h4>
   </footer>
+
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>

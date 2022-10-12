@@ -23,7 +23,6 @@ cityHumidity.textContent    = '';
 
 var getFromStorage = function () {
   var storedCities = JSON.parse(localStorage.getItem("cities"));
-  console.log(storedCities);
   if (storedCities !== null) {
     for (let i = 0; i < storedCities.length; i++) {
       const city = storedCities[i];
@@ -90,7 +89,7 @@ var getForecastInfo = function (city) {
   .then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        displayForecast(data, city);
+        displayForecast(data);
       });
     } else {
       alert('Error: ' + response.statusText);
@@ -109,28 +108,29 @@ var displayData = function (weatherData, cityName) {
   var tempKelvin = weatherData.main.temp;
   var tempFahrenheit = 1.8 * (tempKelvin - 273) + 32;
   var weatherDescription = weatherData.weather[0].description;
-  // var weatherIcon = weatherData.weather[0].icon;
+  var weatherIcon = weatherData.weather[0].icon;
   var windSpeedMPS = weatherData.wind.speed;
   var windSpeedMPH = windSpeedMPS * 2.23694;
   var humidityPercentage = weatherData.main.humidity;
 
   cityHeader.textContent = cityName + " (" + month + "/" + day + "/" + year + ")";
-  // cityIcon.src = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
-  // cityIcon.classList.remove("hidden");
-  // cityIcon.classList.add("show");
+  cityIcon.src = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+  cityIcon.classList.remove("hidden");
+  cityIcon.classList.add("show");
   cityDescription.textContent = weatherDescription;
   cityTemp.textContent = "Temp: " + tempFahrenheit.toFixed(2) + " deg F";
   cityWind.textContent = "Wind: " + windSpeedMPH.toFixed(2) + " MPH";
   cityHumidity.textContent = "Humidity: " + humidityPercentage + "%";
 }
 
-var displayForecast = function (forecastData, cityName) {
+var displayForecast = function (forecastData) {
+  console.log(forecastData);
   var today = new Date();
   for (let i = 0; i < 5; i++) {
     idValue = i + 1
     var forecastDate = document.querySelector('#forecast-header-' + idValue);
     var forecastDescription = document.querySelector('#forecast-description-' + idValue);
-    // var forecastIcon = document.querySelector('#forecast-icon-' + idValue);
+    var forecastIcon = document.querySelector('#forecast-icon-' + idValue);
     var forecastTemp = document.querySelector('#forecast-temp-' + idValue);
     var forecastWind = document.querySelector('#forecast-wind-' + idValue);
     var forecastHumidity = document.querySelector('#forecast-humidity-' + idValue);
@@ -142,6 +142,7 @@ var displayForecast = function (forecastData, cityName) {
     var day = forecastDay.getDate();
     var tempKelvin = forecastData.list[(i * 7) + 5].main.temp;
     var tempFahrenheit = 1.8 * (tempKelvin - 273) + 32;
+    var weatherIcon = forecastData.list[(i * 7) + 5].weather[0].icon;
     var weatherDescription = forecastData.list[(i * 7) + 5].weather[0].description;
     var windSpeedMPS = forecastData.list[(i * 7) + 5].wind.speed;
     var windSpeedMPH = windSpeedMPS * 2.23694; 
@@ -149,7 +150,9 @@ var displayForecast = function (forecastData, cityName) {
 
     forecastDate.textContent = "(" + month + "/" + day + "/" + year + ")";
     forecastDescription.textContent = weatherDescription
-    // forecastIcon.textContent = weatherIcon
+    forecastIcon.src = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+    forecastIcon.classList.remove("hidden");
+    forecastIcon.classList.add("show");
     forecastTemp.textContent = "Temp: " + tempFahrenheit.toFixed(2) + " deg F";
     forecastWind.textContent = "Wind: " + windSpeedMPH.toFixed(2) + " MPH";
     forecastHumidity.textContent = "Humidity: " + humidityPercentage + "%";
@@ -166,7 +169,5 @@ var buttonClickHandler = function (event) {
 }
 
 getFromStorage();
-cityFormEl.addEventListener('submit', formSubmitHandler)
-previousCitiesEl.addEventListener('click', buttonClickHandler)
-
-// TODO: Cleanup HTML and CSS
+cityFormEl.addEventListener('submit', formSubmitHandler);
+previousCitiesEl.addEventListener('click', buttonClickHandler);

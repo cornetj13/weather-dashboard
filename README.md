@@ -31,10 +31,10 @@ THEN I am again presented with current and future conditions for that city
 The webpage looks as following:
 
 ## Initial page
-![The landing page of the application before usage.](./assets/README-images/start-page.png)
+![The landing page of the application before usage.](./assets/README-images/unused-page.png)
 
 ## Example of Usage.
-![A page after several searches have been made.](./assets/README-images/play-page.png)
+![A page after several searches have been made.](./assets/README-images/used-page.png)
 
 ## Installation
 
@@ -44,7 +44,7 @@ No Installation is needed to view and use this webpage.
 
 In order to access the website, visit:
 
-
+https://cornetj13.github.io/weather-dashboard/
 
 ## Credits
 
